@@ -28,7 +28,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Solution URL: [Solution](https://www.frontendmentor.io/solutions/responsive-multi-page-space-tourism-website-using-react-VA81vB_LcR)
 - Live Site URL: [Live Site](https://space-tourism-responsive.netlify.app/)
 
 ## My process
@@ -45,6 +45,6 @@ Users should be able to:
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
+- Website - [Deeperr0](https://github.com/Deeperr0)
+- Frontend Mentor - [@Deeperr0](https://www.frontendmentor.io/profile/Deeperr0)
+- Twitter - [@deeperr00](https://www.twitter.com/deeperr00)
