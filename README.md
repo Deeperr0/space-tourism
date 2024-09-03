@@ -22,10 +22,6 @@ Users should be able to:
 - See hover states for all interactive elements on the page
 - View each page and be able to toggle between the tabs to see new information
 
-### Screenshot
-
-![](./screenshot.jpg)
-
 ### Links
 
 - Solution URL: [Solution](https://www.frontendmentor.io/solutions/responsive-multi-page-space-tourism-website-using-react-VA81vB_LcR)
