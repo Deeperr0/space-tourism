@@ -24,8 +24,8 @@ export default function Home() {
 			</Helmet>
 			<div className="w-full">
 				<div className="pt-6 lg:flex px-[12%] lg:gap-72 lg:pt-[10%] lg:pb-32">
-					<div className="text-white flex flex-col items-center justify-center px-6 md:px-24 md:mx-10 mt-6 lg:items-start lg:p-0 lg:m-0">
-						<h1 className="home-subtitle flex flex-col items-center text-center text-blue-300">
+					<div className="text-white flex flex-col items-center justify-center md:px-24 md:mx-10 mt-6 lg:items-start lg:p-0 lg:m-0">
+						<h1 className="home-subtitle flex flex-col items-center lg:items-start text-center text-blue-300 w-full">
 							SO, YOU WANT TO TRAVEL TO
 							<span className="block preset-1 text-white animate-slide-in-left">
 								SPACE

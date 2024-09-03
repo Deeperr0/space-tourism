@@ -4,7 +4,7 @@ export default function Navbar() {
 	const [showMenu, setShowMenu] = useState(false);
 	return (
 		<nav className="flex justify-between items-center px-8 py-6 md:py-0 md:px-0 lg:pt-10">
-			<div className="md:py-6 md:px-8 lg:pl-16 lg:flex lg:gap-16 lg:w-full lg:pr-0 items-center">
+			<div className="md:py-6 md:px-10 lg:pl-16 lg:flex lg:gap-16 lg:w-full lg:pr-0 items-center">
 				<a href="/">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
