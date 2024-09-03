@@ -4,7 +4,7 @@ export default function Navbar() {
 	const [showMenu, setShowMenu] = useState(false);
 	return (
 		<nav className="flex justify-between items-center px-8 py-6 md:py-0 md:px-0 lg:pt-10">
-			<div className="md:py-6 md:px-8 lg:flex lg:gap-16 lg:w-full lg:pr-0 items-center">
+			<div className="md:py-6 md:px-8 lg:pl-16 lg:flex lg:gap-16 lg:w-full lg:pr-0 items-center">
 				<a href="/">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -29,9 +29,9 @@ export default function Navbar() {
 						</g>
 					</svg>
 				</a>
-				<div className="hidden lg:block h-[1px] w-full bg-[#979797] lg:mr-[-32px] opacity-25"></div>
+				<div className="hidden lg:block h-[1px] w-full bg-[#979797] lg:mr-[-32px] opacity-25 z-20"></div>
 			</div>
-			<div className="hidden md:flex bg-white-100 relative z-0 md:pr-10 lg:pr-16 shrink-0 lg:w-[52%] pl-28 lg:pl-40">
+			<div className="hidden md:flex bg-white-100 backdrop-blur-lg relative z-0 md:pr-10 lg:pr-16 shrink-0 lg:w-[52%] pl-28 lg:pl-40">
 				<ul className="flex relative z-10 opacity-100 text-white gap-12 [&>li]:py-10 [&_span]:font-bold [&_a]:uppercase [&_li]:border-b-2 [&_li]:transition-all [&_li]:duration-500 [&_li]:ease-in">
 					<li
 						className={`h-full ${
