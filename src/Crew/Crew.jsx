@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 
 export default function Crew({ dataJson }) {
 	const [currentCrewMember, setCurrentCrewMember] = useState(dataJson.crew[0]);
+	const [currentCrewMemberIndex, setCurrentCrewMemberIndex] = useState(0);
 	useEffect(() => {
 		// Add background classes
 		document
@@ -16,19 +17,6 @@ export default function Crew({ dataJson }) {
 				"bg-no-repeat",
 				"bg-center"
 			);
-
-		// Animation handling
-		const element = document.getElementById("crew-image");
-		element.classList.add("animate-slide-in-right");
-		element.classList.remove("opacity-0");
-
-		element.addEventListener(
-			"animationend",
-			() => {
-				element.classList.remove("animate-slide-in-right");
-			},
-			{ once: true }
-		);
 
 		// Scroll event listener
 		const scrollContainer = document.getElementById("crew-scroll-container");
@@ -54,6 +42,19 @@ export default function Crew({ dataJson }) {
 					dataJson.crew.length - 1
 				);
 				setCurrentCrewMember(dataJson.crew[nextIndex]);
+				setCurrentCrewMemberIndex(nextIndex);
+				// Animation handling
+				const element = document.getElementById("crew-image");
+				element.classList.add("animate-slide-in-right");
+				element.classList.remove("opacity-0");
+
+				element.addEventListener(
+					"animationend",
+					() => {
+						element.classList.remove("animate-slide-in-right");
+					},
+					{ once: true }
+				);
 				isSwiping = false; // Prevent multiple updates in one swipe
 			} else if (moveDistance > threshold) {
 				// Swiped left
@@ -62,7 +63,20 @@ export default function Crew({ dataJson }) {
 					0
 				);
 				setCurrentCrewMember(dataJson.crew[prevIndex]);
+				setCurrentCrewMemberIndex(prevIndex);
 				isSwiping = false; // Prevent multiple updates in one swipe
+				// Animation handling
+				const element = document.getElementById("crew-image");
+				element.classList.add("animate-slide-in-left");
+				element.classList.remove("opacity-0");
+
+				element.addEventListener(
+					"animationend",
+					() => {
+						element.classList.remove("animate-slide-in-left");
+					},
+					{ once: true }
+				);
 			}
 		};
 
@@ -81,6 +95,21 @@ export default function Crew({ dataJson }) {
 			scrollContainer.removeEventListener("touchend", handleTouchEnd);
 		};
 	}, [currentCrewMember, dataJson.crew]);
+
+	useEffect(() => {
+		// Animation handling
+		const element = document.getElementById("crew-image");
+		element.classList.add("animate-slide-in-right");
+		element.classList.remove("opacity-0");
+
+		element.addEventListener(
+			"animationend",
+			() => {
+				element.classList.remove("animate-slide-in-right");
+			},
+			{ once: true }
+		);
+	}, []);
 
 	return (
 		<div className="w-full h-full">
@@ -116,15 +145,22 @@ export default function Crew({ dataJson }) {
 								<div
 									key={index}
 									onClick={() => {
+										let animation = "";
+										if (index > currentCrewMemberIndex) {
+											animation = "animate-slide-in-right";
+										} else {
+											animation = "animate-slide-in-left";
+										}
 										setCurrentCrewMember(crewMember);
+										setCurrentCrewMemberIndex(index);
 										const element = document.getElementById("crew-image");
-										element.classList.add("animate-slide-in-right");
+										element.classList.add(animation);
 										element.classList.remove("opacity-0");
 
 										element.addEventListener(
 											"animationend",
 											() => {
-												element.classList.remove("animate-slide-in-right");
+												element.classList.remove(animation);
 											},
 											{ once: true }
 										);

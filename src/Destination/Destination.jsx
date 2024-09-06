@@ -6,6 +6,7 @@ export default function Destination({ dataJson }) {
 	const [currentDestination, setCurrentDestination] = useState(
 		dataJson.destinations[0]
 	);
+	const [currentDestinationIndex, setCurrentDestinationIndex] = useState(0);
 	useEffect(() => {
 		document
 			.getElementById("root")
@@ -70,16 +71,23 @@ export default function Destination({ dataJson }) {
 												: "border-transparent hover:border-b-white-500 transition-all duration-500"
 										} border-b-2 uppercase`}
 										onClick={() => {
+											let animation = "";
+											if (index > currentDestinationIndex) {
+												animation = "animate-slide-in-right";
+											} else if (index < currentDestinationIndex) {
+												animation = "animate-slide-in-left";
+											}
 											setCurrentDestination(destination);
+											setCurrentDestinationIndex(index);
 											const element =
 												document.getElementById("destination-image");
-											element.classList.add("animate-slide-in-left");
+											element.classList.add(animation);
 											element.classList.remove("opacity-0");
 
 											element.addEventListener(
 												"animationend",
 												() => {
-													element.classList.remove("animate-slide-in-left");
+													element.classList.remove(animation);
 												},
 												{ once: true }
 											);
