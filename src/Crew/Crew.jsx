@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 export default function Crew({ dataJson }) {
 	const [currentCrewMember, setCurrentCrewMember] = useState(dataJson.crew[0]);
 	useEffect(() => {
+		// Add background classes
 		document
 			.getElementById("root")
 			.classList.add(
@@ -15,6 +16,8 @@ export default function Crew({ dataJson }) {
 				"bg-no-repeat",
 				"bg-center"
 			);
+
+		// Animation handling
 		const element = document.getElementById("crew-image");
 		element.classList.add("animate-slide-in-right");
 		element.classList.remove("opacity-0");
@@ -29,31 +32,53 @@ export default function Crew({ dataJson }) {
 
 		// Scroll event listener
 		const scrollContainer = document.getElementById("crew-scroll-container");
-		let lastScrollLeft = scrollContainer.scrollLeft;
+		let startX = 0;
+		let threshold = 100; // Minimum swipe distance to change the crew member
+		let isSwiping = false;
 
-		const handleScroll = () => {
-			const newScrollLeft = scrollContainer.scrollLeft;
-			if (newScrollLeft > lastScrollLeft) {
-				// Scrolling to the right
+		const handleTouchStart = (e) => {
+			startX = e.touches[0].clientX;
+			isSwiping = true;
+		};
+
+		const handleTouchMove = (e) => {
+			if (!isSwiping) return;
+
+			let touchX = e.touches[0].clientX;
+			let moveDistance = touchX - startX;
+
+			if (moveDistance < -threshold) {
+				// Swiped right
 				const nextIndex = Math.min(
 					dataJson.crew.indexOf(currentCrewMember) + 1,
 					dataJson.crew.length - 1
 				);
 				setCurrentCrewMember(dataJson.crew[nextIndex]);
-			} else if (newScrollLeft < lastScrollLeft) {
-				// Scrolling to the left
+				isSwiping = false; // Prevent multiple updates in one swipe
+			} else if (moveDistance > threshold) {
+				// Swiped left
 				const prevIndex = Math.max(
 					dataJson.crew.indexOf(currentCrewMember) - 1,
 					0
 				);
 				setCurrentCrewMember(dataJson.crew[prevIndex]);
+				isSwiping = false; // Prevent multiple updates in one swipe
 			}
-			lastScrollLeft = newScrollLeft;
 		};
-		scrollContainer.addEventListener("scroll", handleScroll);
+
+		const handleTouchEnd = () => {
+			isSwiping = false;
+		};
+
+		scrollContainer.addEventListener("touchstart", handleTouchStart);
+		scrollContainer.addEventListener("touchmove", handleTouchMove);
+		scrollContainer.addEventListener("touchend", handleTouchEnd);
 
 		return () => {
-			scrollContainer.removeEventListener("scroll", handleScroll);
+			// Clean up event listeners
+			scrollContainer.removeEventListener("touchstart", handleTouchStart);
+			scrollContainer.removeEventListener("touchmove", handleTouchMove);
+			scrollContainer.removeEventListener("touchend", handleTouchEnd);
 		};
 	}, [currentCrewMember, dataJson.crew]);
 
@@ -86,10 +111,7 @@ export default function Crew({ dataJson }) {
 								{currentCrewMember?.bio}
 							</p>
 						</div>
-						<div
-							className="flex items-center gap-4"
-							id="crew-scroll-container"
-						>
+						<div className="flex items-center gap-4">
 							{dataJson.crew.map((crewMember, index) => (
 								<div
 									key={index}
@@ -116,13 +138,15 @@ export default function Crew({ dataJson }) {
 							))}
 						</div>
 					</div>
-					<div className="px-7 lg:w-[48%] shrink-0">
-						<img
-							id="crew-image"
-							src={currentCrewMember?.images?.webp}
-							alt={currentCrewMember?.name}
-							className="lg:relative md:absolute md:bottom-0 md:right-0 my-16 md:m-0 lg:m-0 foreground-image md:px-40 lg:px-0 md:h-[45%] md:object-cover"
-						/>
+					<div id="crew-scroll-container">
+						<div className="px-7 lg:w-[48%] shrink-0 overflow-hidden">
+							<img
+								id="crew-image"
+								src={currentCrewMember?.images?.webp}
+								alt={currentCrewMember?.name}
+								className="lg:relative md:absolute md:bottom-0 md:right-0 my-16 md:m-0 lg:m-0 foreground-image md:px-40 lg:px-0 md:h-[45%] md:object-cover"
+							/>
+						</div>
 					</div>
 				</div>
 			</div>
