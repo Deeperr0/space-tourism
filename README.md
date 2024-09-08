@@ -1,11 +1,11 @@
-# Frontend Mentor - Space tourism website solution
+# Space Tourism Website
 
-This is a solution to the [Space tourism website challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/space-tourism-multipage-website-gRWj1URZ3). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
+This Space Tourism website features a responsive design with an optimal layout for different screen sizes, interactive hover states, and tab-based navigation for exploring new information.
 
 ## Table of contents
 
 - [Overview](#overview)
-  - [The challenge](#the-challenge)
+  - [Features](#features)
   - [Screenshot](#screenshot)
   - [Links](#links)
 - [My process](#my-process)
@@ -14,17 +14,16 @@ This is a solution to the [Space tourism website challenge on Frontend Mentor](h
 
 ## Overview
 
-### The challenge
+### Features
 
-Users should be able to:
+Users can:
 
-- View the optimal layout for each of the website's pages depending on their device's screen size
+- View the optimal layout for each page depending on their device's screen size
 - See hover states for all interactive elements on the page
-- View each page and be able to toggle between the tabs to see new information
+- Navigate between tabs to view new information
 
 ### Links
 
-- Solution URL: [Solution](https://www.frontendmentor.io/solutions/responsive-multi-page-space-tourism-website-using-react-VA81vB_LcR)
 - Live Site URL: [Live Site](https://space-tourism-responsive.netlify.app/)
 
 ## My process
@@ -42,5 +41,4 @@ Users should be able to:
 ## Author
 
 - Website - [Deeperr0](https://github.com/Deeperr0)
-- Frontend Mentor - [@Deeperr0](https://www.frontendmentor.io/profile/Deeperr0)
 - Twitter - [@deeperr00](https://www.twitter.com/deeperr00)
