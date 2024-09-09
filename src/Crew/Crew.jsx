@@ -206,13 +206,16 @@ export default function Crew({ dataJson }) {
 								))}
 							</div>
 						</div>
-						<div id="crew-scroll-container">
-							<div className="px-7 lg:w-[48%] shrink-0 overflow-hidden">
+						<div
+							id="crew-scroll-container"
+							className="lg:w-full"
+						>
+							<div className="px-7 shrink-0 overflow-hidden">
 								<img
 									id="crew-image"
 									src={currentCrewMember?.images?.webp}
 									alt={currentCrewMember?.name}
-									className="lg:relative md:absolute md:bottom-0 md:right-0 my-16 md:m-0 lg:m-0 foreground-image md:px-40 lg:px-0 md:h-[45%] md:object-cover"
+									className="lg:relative md:absolute md:bottom-0 md:right-0 my-16 md:m-0 lg:m-0 foreground-image md:px-40 lg:px-0 md:h-[45%] lg:h-full md:object-cover"
 								/>
 							</div>
 						</div>
