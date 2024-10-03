@@ -8,10 +8,6 @@ import Home from "./Home";
 const Destination = lazy(() => import("./Destination"));
 const Crew = lazy(() => import("./Crew"));
 const Technology = lazy(() => import("./Technology"));
-// import Home from "./Home";
-// import Destination from "./Destination";
-// import Crew from "./Crew";
-// import Technology from "./Technology";
 
 function App() {
 	return (
